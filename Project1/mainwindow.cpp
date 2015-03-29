@@ -59,13 +59,35 @@ void MainWindow::on_pushButton_3_clicked()
     float n;
     line=fread.readLine();
     QTextStream out(&fsave);
+    QString num2;
     while(!line.isEmpty())
     {
         num=line.section(' ',0,0);
         n=num.toFloat();
+        num=num.trimmed();
+        num2=QLocale::system().toString(n,'f',1);
+        num2=num2.trimmed();
+        num2.replace(",",".");
+        //out<<"\n1."<<num<<" "<<num2;
+        if(num!=num2)
+        {
+            ui->label->setText("Неверный формат.");
+            return;
+        }
         array.push_back(n);
+        line.remove(0,line.indexOf(' '));
         num=line.section(' ',1,1);
         n=num.toFloat();
+        num=num.trimmed();
+        num2=QLocale::system().toString(n,'f',1);
+        num2=num2.trimmed();
+        num2.replace(",",".");
+        //out<<"\n2."<<num<<" "<<num2;
+        if(num!=num2)
+        {
+            ui->label->setText("Неверный формат.");
+            return;
+        }
         array.push_back(n);
         line=fread.readLine();
     }
