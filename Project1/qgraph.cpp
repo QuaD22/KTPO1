@@ -19,6 +19,18 @@ void qgraph::paintEvent(QPaintEvent *event)
 {
     QPainter p;
     p.begin(this);
+    QLinearGradient gr( 0, 0, 0, 40 );
+    gr.setColorAt( 0.0, Qt::gray );
+    gr.setColorAt( 1.0, Qt::gray );
+    p.setBrush(QBrush(gr));
+    p.drawRect( 150, 0, 390, 400) ;
+    gr.setColorAt( 0.0, Qt::white );
+    gr.setColorAt( 1.0, Qt::white );
+    p.setBrush(QBrush(gr));
+    p.drawRect(0,0,150,400);
+    p.drawEllipse(QPoint(200,200),100,100);
+    QBrush br;
+    p.setBrush(br);
     p.setPen(QPen(Qt::black,1,Qt::SolidLine));
     p.setRenderHint(QPainter::Antialiasing, true);
     p.drawLine(200,0,200,400);
@@ -31,9 +43,9 @@ void qgraph::paintEvent(QPaintEvent *event)
     p.drawText(gc(0)-10,gc(-1)+10,QString("1"));
     p.setPen(QPen(Qt::black,2,Qt::SolidLine));
     p.drawEllipse(QPoint(200,200),100,100);
-    p.drawLine(gc(-0.5),50,gc(-0.5),350);
+    p.drawLine(gc(-0.5),0,gc(-0.5),400);
     p.setPen(QPen(Qt::red,5,Qt::SolidLine));
-    p.drawPoint(gc(cx),gc(-cy));
+    p.drawPoint(gc(cx),gc(-cy));    
     p.end();
 }
 

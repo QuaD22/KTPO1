@@ -15,7 +15,6 @@ public:
     explicit qgraph(QWidget *parent = 0);
     int lc(int k);
     int gc(float k);
-    void change_point(float x, float y);
     ~qgraph();
 private:
     void paintEvent(QPaintEvent *event);

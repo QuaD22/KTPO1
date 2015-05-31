@@ -52,6 +52,12 @@ void MainWindow::on_pushButton_3_clicked()
     if (!fread.open(QIODevice::ReadOnly | QIODevice::Text))
             return;
     QFile fsave(ui->lineEdit_2->text());
+    QString fname=ui->lineEdit_2->text();
+    if(!fname.endsWith(".txt"))
+    {
+        ui->label->setText("Неверный формат.");
+        return;
+    }
     if (!fsave.open(QIODevice::WriteOnly | QIODevice::Text))
             return;
     QString line;
